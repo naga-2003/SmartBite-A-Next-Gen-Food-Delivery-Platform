@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Order Success</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      padding: 40px;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      color: #28a745;
+      margin-bottom: 30px;
+    }
+
+    .order-container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 25px 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    strong {
+      color: #555;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 15px;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .link-group {
+      text-align: center;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="order-container">
+    <h1>Order Placed Successfully!</h1>
+
+    <p><strong>Order ID:</strong> <span th:text="${order.id}"></span></p>
+    <p><strong>Food Item:</strong> <span th:text="${order.foodItem}"></span></p>
+    <p><strong>Amount:</strong> $<span th:text="${order.amount}"></span></p>
+    <p><strong>Tax:</strong> $<span th:text="${order.tax}"></span></p>
+    <p><strong>Total:</strong> $<span th:text="${order.total}"></span></p>
+
+    <div class="link-group">
+      <a th:href="@{'/order/' + ${order.id} + '/pdf'}" target="_blank">📄 Download PDF Invoice</a><br/>
+      <a href="/food">🍔 Order Another Food</a><br/>
+      <a href="/logout">🔒 Logout</a>
+    </div>
+  </div>
+</body>
+</html>

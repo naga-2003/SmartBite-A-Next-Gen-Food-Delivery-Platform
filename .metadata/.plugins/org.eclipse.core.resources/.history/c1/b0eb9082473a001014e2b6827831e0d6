@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Food Menu</title>
+  <link rel="stylesheet" th:href="@{/css/menu.css}" />
+</head>
+<body>
+  <h1>Food Menu</h1>
+  <div class="grid-container">
+    <div class="grid-item" th:each="item : ${foodItems}">
+      <img th:src="@{${item.imageUrl}}" alt="Food image" />
+      <h3 th:text="${item.name}"></h3>
+      <p th:text="${item.description}"></p>
+      <p>Price: $<span th:text="${item.price}"></span></p>
+      <form th:action="@{'/order/' + ${item.id}}" method="post">
+        <button type="submit">Order Now</button>
+      </form>
+    </div>
+  </div>
+  <br/>
+  <a href="/invoices">View All Invoices</a>
+</body>
+</html>

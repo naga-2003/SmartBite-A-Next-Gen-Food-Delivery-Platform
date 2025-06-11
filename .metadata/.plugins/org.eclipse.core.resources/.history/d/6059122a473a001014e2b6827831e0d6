@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order List</title>
+</head>
+<body>
+<h2>All Orders</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Invoice ID</th>
+            <th>Customer Name</th>
+            <th>Total</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="invoice : ${invoices}">
+            <td th:text="${invoice.id}"></td>
+            <td th:text="${invoice.customerName}"></td>
+            <td th:text="${invoice.totalAmount}"></td>
+            <td>
+                <a th:href="@{/invoiceDetails/{id}(id=${invoice.id})}">Details</a> |
+                <a th:href="@{/orders/{id}/invoice(id=${invoice.id})}">Download PDF</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<p><a href="/home">Back to Home</a></p>
+</body>
+</html>

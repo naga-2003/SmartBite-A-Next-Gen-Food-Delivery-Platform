@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Create Invoice</title>
+  <link rel="stylesheet" th:href="@{/css/create_invoice.css}" />
+</head>
+<body>
+  <h1>Create Invoice</h1>
+  <form th:action="@{/invoices}" th:object="${invoice}" method="post">
+    <label>Customer Name:</label><br/>
+    <input type="text" th:field="*{customerName}" required/><br/><br/>
+
+    <label>Food Item:</label><br/>
+    <select th:field="*{description}">
+      <option value="Pizza">Pizza</option>
+      <option value="Burger">Burger</option>
+      <option value="Pasta">Pasta</option>
+      <option value="Salad">Salad</option>
+    </select><br/><br/>
+
+    <label>Amount:</label><br/>
+    <input type="number" step="0.01" th:field="*{amount}" required/><br/><br/>
+
+    <label>Tax (fixed 10%):</label><br/>
+    <input type="number" step="0.01" th:field="*{tax}" value="10" required/><br/><br/>
+
+    <button type="submit">Create Invoice</button>
+  </form>
+
+  <br/>
+  <a href="/invoices">View All Invoices</a>
+</body>
+</html>

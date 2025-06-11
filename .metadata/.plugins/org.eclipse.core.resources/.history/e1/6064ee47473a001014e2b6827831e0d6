@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Order Success</title>
+</head>
+<body>
+  <h1>Order Placed Successfully!</h1>
+  <p><strong>Order ID:</strong> <span th:text="${order.id}"></span></p>
+  <p><strong>Food Item:</strong> <span th:text="${order.foodItem}"></span></p>
+  <p><strong>Amount:</strong> $<span th:text="${order.amount}"></span></p>
+  <p><strong>Tax:</strong> $<span th:text="${order.tax}"></span></p>
+  <p><strong>Total:</strong> $<span th:text="${order.total}"></span></p>
+
+  <a th:href="@{'/order/' + ${order.id} + '/pdf'}" target="_blank">Download PDF Invoice</a><br/><br/>
+  <a href="/food">Order Another Food</a><br/>
+  <a href="/logout">Logout</a>
+</body>
+</html>

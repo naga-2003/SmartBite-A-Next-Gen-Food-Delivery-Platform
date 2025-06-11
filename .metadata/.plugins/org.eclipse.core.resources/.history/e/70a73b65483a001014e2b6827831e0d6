@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Invoice Details</title>
+</head>
+<body>
+<h2>Invoice Details</h2>
+
+<p><b>Invoice ID:</b> <span th:text="${invoice.id}"></span></p>
+<p><b>Customer Name:</b> <span th:text="${invoice.customerName}"></span></p>
+<p><b>Total:</b> <span th:text="${invoice.totalAmount}"></span></p>
+
+<h3>Items:</h3>
+<ul>
+    <li th:each="item : ${invoice.items}" th:text="${item.name} + ' - $' + ${item.price}"></li>
+</ul>
+
+<p><a href="/orders">Back to Orders</a></p>
+</body>
+</html>

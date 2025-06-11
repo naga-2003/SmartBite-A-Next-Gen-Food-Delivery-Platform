@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Place Order</title>
+</head>
+<body>
+<h2>Place Your Order</h2>
+
+<form action="/placeOrder" method="post">
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" name="customerName" required />
+
+    <h3>Select Items:</h3>
+    <ul>
+        <li th:each="item : ${items}">
+            <input type="checkbox" name="itemIds" th:value="${item.id}" />
+            <span th:text="${item.name} + ' - $' + ${item.price}"></span>
+        </li>
+    </ul>
+
+    <button type="submit">Place Order</button>
+</form>
+
+<p><a href="/orders">View All Orders</a></p>
+</body>
+</html>

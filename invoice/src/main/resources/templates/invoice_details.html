@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Invoice Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #343a40;
+            border-bottom: 2px solid #6c757d;
+            padding-bottom: 5px;
+        }
+
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #ffffff;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h2>Invoice Details</h2>
+
+<p><b>Invoice ID:</b> <span th:text="${invoice.id}"></span></p>
+<p><b>Customer Name:</b> <span th:text="${invoice.customerName}"></span></p>
+<p><b>Total:</b> $<span th:text="${invoice.totalAmount}"></span></p>
+
+<h3>Items:</h3>
+<ul>
+    <li th:each="item : ${invoice.items}" th:text="${item.name} + ' - $' + ${item.price}"></li>
+</ul>
+
+<p><a href="/orders">Back to Orders</a></p>
+</body>
+</html>
