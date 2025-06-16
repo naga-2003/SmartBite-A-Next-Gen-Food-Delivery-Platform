@@ -1,4 +1,0 @@
-spring.application.name=invoice
-spring.data.mongodb.uri=mongodb://localhost:27017/invoicedb
-spring.data.mongodb.database=invoicedb
-server.port=3080
