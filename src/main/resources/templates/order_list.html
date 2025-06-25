@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Order List</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #e0f7fa, #f1fdfb);
+            color: #004d40;
+            padding: 40px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00796b;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid #e0f2f1;
+        }
+
+        th {
+            background-color: #00796b;
+            color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: #e0f2f1;
+        }
+
+        a {
+            color: #00796b;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .back-link a {
+            background-color: #00796b;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-link a:hover {
+            background-color: #004d40;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>All Orders</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Invoice ID</th>
+                <th>Customer Name</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="invoice : ${invoices}">
+                <td th:text="${invoice.id}"></td>
+                <td th:text="${invoice.customerName}"></td>
+                <td>$<span th:text="${invoice.totalAmount}"></span></td>
+                <td>
+                    <a th:href="@{/invoiceDetails/{id}(id=${invoice.id})}">Details</a> |
+                    <a th:href="@{/orders/{id}/invoice(id=${invoice.id})}">Download PDF</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="back-link">
+        <a href="/home">← Back to Home</a>
+    </div>
+</div>
+</body>
+</html>

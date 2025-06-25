@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Place Order</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #f8f9fa, #e0f7fa);
+            margin: 0;
+            padding: 50px;
+            color: #212529;
+        }
+
+        h2 {
+            text-align: center;
+            color: #00695c;
+            margin-bottom: 40px;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            max-width: 700px;
+            margin: auto;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            margin-bottom: 25px;
+            font-size: 16px;
+        }
+
+        h3 {
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 25px;
+        }
+
+        li {
+            background: #f1f1f1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            transition: background 0.3s ease;
+        }
+
+        li:hover {
+            background: #e0f2f1;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+        }
+
+        button[type="submit"] {
+            background: #009688;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: block;
+            margin: auto;
+        }
+
+        button[type="submit"]:hover {
+            background: #00796b;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 25px;
+        }
+
+        a {
+            color: #009688;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        form[th\\:action] button {
+            background-color: #d32f2f;
+            margin-top: 25px;
+        }
+
+        form[th\\:action] button:hover {
+            background-color: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+<h2>Place Your Order</h2>
+
+<form action="/placeOrder" method="post">
+    <label for="customerName">Customer Name:</label>
+    <input type="text" id="customerName" name="customerName" required />
+
+    <h3>Select Items:</h3>
+    <ul>
+        <li th:each="item : ${items}">
+            <input type="checkbox" name="itemIds" th:value="${item.id}" />
+            <span th:text="${item.name} + ' - $' + ${item.price}"></span>
+        </li>
+    </ul>
+
+    <button type="submit">Place Order</button>
+</form>
+
+<p><a href="/orders">View All Orders</a></p>
+
+<form th:action="@{/logout}" method="post" style="text-align: center;">
+    <button type="submit">Logout</button>
+</form>
+</body>
+</html>

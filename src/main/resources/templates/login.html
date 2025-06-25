@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Login</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0f2f1, #ffffff);
+      margin: 0;
+      padding: 60px 20px;
+      color: #333;
+    }
+
+    .login-container {
+      background: #fff;
+      max-width: 450px;
+      margin: auto;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      color: #00796b;
+      margin-bottom: 30px;
+    }
+
+    label {
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    button {
+      background: #009688;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #00796b;
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .register-link a {
+      color: #009688;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .error-message {
+      color: #d32f2f;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h2>Login</h2>
+    <form th:action="@{/login}" method="post">
+      <div th:if="${error}" class="error-message" th:text="${error}"></div>
+
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+
+      <button type="submit">Login</button>
+
+      <div class="register-link">
+        <p>Don't have an account? <a th:href="@{/signup}">Sign up</a></p>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>List Invoices</title>
+  <link rel="stylesheet" th:href="@{/css/create_invoice.css}" />
+
+</head>
+<body>
+  <h1>Invoices List</h1>
+
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Customer Name</th>
+        <th>Food Item</th>
+        <th>Amount</th>
+        <th>Tax</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="invoice : ${invoices}">
+        <td><a th:href="@{'/invoices/' + ${invoice.id}}" th:text="${invoice.id}"></a></td>
+        <td th:text="${invoice.customerName}"></td>
+        <td th:text="${invoice.description}"></td>
+        <td th:text="${invoice.amount}"></td>
+        <td th:text="${invoice.tax}"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <br/>
+  <a href="/invoices/new">Create New Invoice</a>
+</body>
+</html>
