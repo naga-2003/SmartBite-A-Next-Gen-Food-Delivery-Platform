@@ -1,4 +1,4 @@
-## 🍽️ SmartBite – A Next-Gen Food Delivery Platform
+## 🍽️ SmartBite – A Food Delivery Platform
 
 SmartBite is a student-built full-stack web application for food delivery. It includes login/signup, food item listings, order placement, PDF invoice generation, and food item management – all powered by a Spring Boot backend and MongoDB database.
 
